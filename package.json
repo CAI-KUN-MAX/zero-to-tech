@@ -1,20 +1,16 @@
 {
-  "name": "zero-to-tech-4-1",
+  "name": "zero-to-tech-4-5",
+  "version": "0.1.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.7.0",
-    "vite": "^4.0.0"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "animejs": "^4.5.0",
-    "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "animejs": "^4.4.1",
+    "next": "^15.0.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }
