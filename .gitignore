@@ -17,3 +17,9 @@ dist/
 .DS_Store
 *.log
 .env*
+
+backend/.venv/
+__pycache__/
+*.py[cod]
+
+
