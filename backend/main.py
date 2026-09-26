@@ -1,4 +1,7 @@
 import uuid
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 from fastapi import FastAPI, Request, Response
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,6 +10,13 @@ from snownlp import SnowNLP
 from datetime import datetime, timezone
 from storage import init_db, save_record, get_history
 
+load_dotenv(dotenv_path=Path(__file__).parent / ".env")
+
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS").split(",")
+
+ 
+init_db()  # 确保数据库表已建立
 app = FastAPI()
 
 # ==================== 1. 完善 CORS 配置 ====================
@@ -17,8 +27,8 @@ origins = [
 ]
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,               # 允许前端域名
+    CORSMiddleware, 
+    allow_origins=ALLOWED_ORIGINS,              # 允许前端域名
     allow_methods=["GET", "POST", "OPTIONS"], # 必须包含 OPTIONS，否则 POST 预检会失败
     allow_headers=["*"],                 # ⭐ 必须加上！允许所有请求头，解决跨域拦截
     allow_credentials=True,              # ⭐ 允许跨源请求带上 cookie（纸条）
